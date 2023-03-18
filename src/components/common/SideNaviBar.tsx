@@ -1,15 +1,20 @@
 import Path from "@/utils/path/routes";
-import { FaHome } from "react-icons/fa";
+import { FaBook, FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
-export interface dashboardInterface {
-  name: string;
-  path: string;
-  // icon:
-}
+import { GiVibratingBall } from "react-icons/gi";
+import { TfiWrite } from "react-icons/tfi";
+import { MdManageAccounts, MdOutlineManageAccounts } from "react-icons/md";
 
 const SideNaviBar = () => {
-  const { HOME, USERS } = Path;
+  const {
+    HOME,
+    USERS,
+    GRADE,
+    AUTH_WRITER_REQ,
+    AUTH_WRITER_MANAGEMENT,
+    AUTH_NOVEL_MANAGEMENT,
+  } = Path;
 
   const liAdminStyle = "cursor-pointer hover:bg-primary-active px-6 py-4";
 
@@ -33,11 +38,42 @@ const SideNaviBar = () => {
           <p>회원관리</p>
         </Link>
       </li>
-      <li className={liAdminStyle}>회원관리</li>
-      <li className={liAdminStyle}>등급관리</li>
-      <li className={liAdminStyle}>신청관리</li>
-      <li className={liAdminStyle}>작과관리</li>
-      <li className={liAdminStyle}>웹소설관리</li>
+      <li className={liAdminStyle}>
+        <Link
+          to={GRADE}
+          className="w-full h-fit flex flex-row gap-2 items-center"
+        >
+          <GiVibratingBall className="text-xl" />
+          <p>등급관리</p>
+        </Link>
+      </li>
+      <li className={liAdminStyle}>
+        <Link
+          to={AUTH_WRITER_REQ}
+          className="w-full h-fit flex flex-row gap-2 items-center"
+        >
+          <MdOutlineManageAccounts className="text-xl" />
+          <p>작가신청</p>
+        </Link>
+      </li>
+      <li className={liAdminStyle}>
+        <Link
+          to={AUTH_WRITER_MANAGEMENT}
+          className="w-full h-fit flex flex-row gap-2 items-center"
+        >
+          <MdManageAccounts className="text-xl" />
+          <p>작가관리</p>
+        </Link>
+      </li>
+      <li className={liAdminStyle}>
+        <Link
+          to={AUTH_NOVEL_MANAGEMENT}
+          className="w-full h-fit flex flex-row gap-2 items-center"
+        >
+          <TfiWrite className="text-xl" />
+          <p>웹소설 관리</p>
+        </Link>
+      </li>
       <li className={liAdminStyle}>댓글관리</li>
       <li className={liAdminStyle}>공지사항 관리</li>
       <li className={liAdminStyle}>이벤트사항 관리</li>
