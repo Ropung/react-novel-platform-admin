@@ -1,11 +1,11 @@
 import UserInfoProps from "@/models/user";
-import {
+import MainButton, {
   DeleteButton,
   ModifyButton,
 } from "@/styles/ui-components/styled-button";
 import { FaAngleDown } from "react-icons/fa";
 
-const UserManagement = () => {
+const UserGradeManagement = () => {
   const UserInfo: UserInfoProps[] = [
     {
       id: 1,
@@ -60,7 +60,6 @@ const UserManagement = () => {
       novel: [],
     },
   ];
-
   const theadStyle = "px-6 py-4  whitespace-nowrap font-medium text-gray-900";
   const spanStyle =
     "inline-flex items-center gap-1 rounded-full bg-gray-50 px-2 py-1 text-xs font-semibold";
@@ -78,13 +77,13 @@ const UserManagement = () => {
                 회원목록
               </th>
               <th scope="col" className={theadStyle}>
-                가입일
+                레벨
               </th>
               <th scope="col" className={theadStyle}>
-                마지막 로그인
+                등급
               </th>
               <th scope="col" className={theadStyle}>
-                상태
+                할인률
               </th>
               <th scope="col" className="px-6 py-4 font-medium text-right">
                 <div className="flex flex-row gap-1 items-center justify-end">
@@ -99,12 +98,9 @@ const UserManagement = () => {
             {UserInfo.map((user, index) => {
               return (
                 <tr className="hover:bg-gray-50">
-                  {/* 번호 */}
                   <td className="px-6 py-4" key={user.id}>
                     {user.id}
                   </td>
-
-                  {/* 회원정보 */}
                   <th className="flex gap-3 px-6 py-4 font-normal">
                     <div className="relative h-10 w-10">
                       <img
@@ -127,27 +123,24 @@ const UserManagement = () => {
                       <div className="text-gray-400">{user.email}</div>
                     </div>
                   </th>
-                  {/* 가입일 */}
+                  {/* 등급 레벨 */}
                   <td className="px-6 py-4 text-gray-600">
-                    <span className={spanStyle}>{user.signIn}</span>
+                    <span className={`${spanStyle}`}>
+                      LV.{user.grade.gradeLevel}
+                    </span>
                   </td>
-                  {/* 마지막 로그인 */}
+
                   <td className="px-6 py-4 text-gray-600">
                     <div className="flex gap-2">
-                      <p className={spanStyle}>{user.lastIn}</p>
+                      <span className={`${spanStyle}`}>
+                        {user.grade.gradeName}
+                      </span>
                     </div>
                   </td>
-                  {/* 상태 */}
-                  <td className="px-6 py-4 text-white">
+                  <td className="px-6 py-4 text-gray-600">
                     <div className="flex gap-2">
-                      <span
-                        className={`${spanStyle} ${
-                          user.states == "Approved"
-                            ? "bg-success"
-                            : "bg-danger "
-                        }`}
-                      >
-                        {user.states}
+                      <span className={`${spanStyle}`}>
+                        {user.grade.discountRate}%
                       </span>
                     </div>
                   </td>
@@ -252,4 +245,4 @@ const UserManagement = () => {
   );
 };
 
-export default UserManagement;
+export default UserGradeManagement;

@@ -5,7 +5,7 @@ import {
 } from "@/styles/ui-components/styled-button";
 import { FaAngleDown } from "react-icons/fa";
 
-const UserManagement = () => {
+const UserAuthorWriterRequest = () => {
   const UserInfo: UserInfoProps[] = [
     {
       id: 1,
@@ -63,7 +63,7 @@ const UserManagement = () => {
 
   const theadStyle = "px-6 py-4  whitespace-nowrap font-medium text-gray-900";
   const spanStyle =
-    "inline-flex items-center gap-1 rounded-full bg-gray-50 px-2 py-1 text-xs font-semibold";
+    "inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-semibold";
 
   return (
     <div className="w-full flex flex-col gap-2">
@@ -81,7 +81,7 @@ const UserManagement = () => {
                 가입일
               </th>
               <th scope="col" className={theadStyle}>
-                마지막 로그인
+                권한
               </th>
               <th scope="col" className={theadStyle}>
                 상태
@@ -94,79 +94,81 @@ const UserManagement = () => {
               </th>
             </tr>
           </thead>
-          {/* 데이터 들어갈곳 */}
-          <tbody className="w-full divide-y divide-gray-100 border-t border-gray-100">
-            {UserInfo.map((user, index) => {
-              return (
-                <tr className="hover:bg-gray-50">
-                  {/* 번호 */}
-                  <td className="px-6 py-4" key={user.id}>
-                    {user.id}
-                  </td>
+          {/* tdody */}
 
-                  {/* 회원정보 */}
-                  <th className="flex gap-3 px-6 py-4 font-normal">
-                    <div className="relative h-10 w-10">
-                      <img
-                        className="h-full w-full rounded-full object-cover object-center"
-                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                      <span
-                        className={`absolute right-0 bottom-0 h-2 w-2 rounded-full ring ring-white ${
-                          user.states == "Approved" ? "bg-success" : "bg-danger"
-                        }`}
-                      ></span>
-                    </div>
-                    <div className="text-sm">
-                      {/* 회원아이디 */}
-                      <div className="font-medium text-gray-700">
-                        {user.userName}
+          {UserInfo.map((user, index) => {
+            return (
+              <tbody className="w-full divide-y divide-gray-100 border-t border-gray-100">
+                {user.job == "USER" && (
+                  <tr className="hover:bg-gray-50">
+                    {/* 번호 */}
+                    <td className="px-6 py-4" key={user.id}>
+                      {user.id}
+                    </td>
+
+                    {/* 회원정보 */}
+                    <th className="flex gap-3 px-6 py-4 font-normal">
+                      <div className="relative h-10 w-10">
+                        <img
+                          className="h-full w-full rounded-full object-cover object-center"
+                          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          alt=""
+                        />
+                        <span
+                          className={`absolute right-0 bottom-0 h-2 w-2 rounded-full ring ring-white ${
+                            user.states == "Approved"
+                              ? "bg-success"
+                              : "bg-danger"
+                          }`}
+                        ></span>
                       </div>
-                      {/* 이메일 */}
-                      <div className="text-gray-400">{user.email}</div>
-                    </div>
-                  </th>
-                  {/* 가입일 */}
-                  <td className="px-6 py-4 text-gray-600">
-                    <span className={spanStyle}>{user.signIn}</span>
-                  </td>
-                  {/* 마지막 로그인 */}
-                  <td className="px-6 py-4 text-gray-600">
-                    <div className="flex gap-2">
-                      <p className={spanStyle}>{user.lastIn}</p>
-                    </div>
-                  </td>
-                  {/* 상태 */}
-                  <td className="px-6 py-4 text-white">
-                    <div className="flex gap-2">
-                      <span
-                        className={`${spanStyle} ${
-                          user.states == "Approved"
-                            ? "bg-success"
-                            : "bg-danger "
-                        }`}
-                      >
-                        {user.states}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex justify-end gap-4">
-                      <div className="flex flex-row gap-1 whitespace-nowrap">
-                        <ModifyButton className="px-2 py-1 text-xs">
-                          수정
-                        </ModifyButton>
-                        <DeleteButton className="px-2 py-1 text-xs">
-                          삭제
-                        </DeleteButton>
+                      <div className="text-sm">
+                        {/* 회원아이디 */}
+                        <div className="font-medium text-gray-700">
+                          {user.userName}
+                        </div>
+                        {/* 이메일 */}
+                        <div className="text-gray-400">{user.email}</div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
+                    </th>
+                    {/* 가입일 */}
+                    <td className="px-6 py-4">
+                      <span className={spanStyle}>{user.signIn}</span>
+                    </td>
+                    {/* 권한 */}
+                    <td className="px-6 py-4">
+                      <div className="flex gap-2">
+                        <p className={spanStyle}>{user.job}</p>
+                      </div>
+                    </td>
+                    {/* 상태 */}
+                    <td className="px-6 py-4 text-white">
+                      <div className="flex gap-2">
+                        <span
+                          className={`${spanStyle} ${
+                            user.states == "Approved"
+                              ? "bg-success"
+                              : "bg-danger "
+                          }`}
+                        >
+                          {user.states}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex justify-end gap-4">
+                        <div className="flex flex-row gap-1 whitespace-nowrap">
+                          <ModifyButton className="px-6 py-2 text-xs">
+                            등록
+                          </ModifyButton>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            );
+          })}
         </table>
       </div>
       {/* Pagination */}
@@ -252,4 +254,4 @@ const UserManagement = () => {
   );
 };
 
-export default UserManagement;
+export default UserAuthorWriterRequest;
