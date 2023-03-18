@@ -91,7 +91,7 @@ export const SuccessButton: FunctionComponent<CommonButtonProps> = (props) => {
   );
 };
 
-export const DangerButton: FunctionComponent<CommonButtonProps> = (props) => {
+export const DeleteButton: FunctionComponent<CommonButtonProps> = (props) => {
   const { children, className, ...restProps } = props;
 
   const stableClasses = "bg-danger text-danger-contra";
@@ -112,6 +112,22 @@ export const WanringButton: FunctionComponent<CommonButtonProps> = (props) => {
 
   const stableClasses = "bg-warning text-warning-contra";
   const activeClasses = "active:bg-warning-active";
+
+  return (
+    <ButtonInterface
+      {...restProps}
+      className={`${stableClasses} ${activeClasses} ${className ?? ""}`}
+    >
+      {children}
+    </ButtonInterface>
+  );
+};
+
+export const ModifyButton: FunctionComponent<CommonButtonProps> = (props) => {
+  const { children, className, ...restProps } = props;
+
+  const stableClasses = "bg-modify text-modify-contra text-white";
+  const activeClasses = "active:bg-modify-active";
 
   return (
     <ButtonInterface
