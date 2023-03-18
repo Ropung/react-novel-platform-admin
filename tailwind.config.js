@@ -31,7 +31,7 @@ module.exports = {
         "footer-active": "#bdbebd",
         "footer-contra": "#a9a9a9",
         // SUCCESS
-        success: "#00B74A",
+        success: "#5cb85c",
         "success-active": "#00913b",
         "success-contra": "#FFFFFF",
         // INFO
@@ -40,6 +40,10 @@ module.exports = {
         "info-contra": "#ffffff",
         // WARNING
         warning: "#FFA900",
+        "warning-active": "#d99000",
+        "warning-contra": "#ffffff",
+        // MODIFY
+        modify: "#FFA900",
         "warning-active": "#d99000",
         "warning-contra": "#ffffff",
         // DANGER
