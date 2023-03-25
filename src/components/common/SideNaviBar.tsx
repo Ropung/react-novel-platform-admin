@@ -86,8 +86,6 @@ const SideNaviBar = () => {
         </Link>
       </li>
       <li className={liAdminStyle}>댓글관리</li>
-      <li className={liAdminStyle}>공지사항 관리</li>
-      <li className={liAdminStyle}>이벤트사항 관리</li>
       <li className={liAdminStyle}>배너 관리</li>
       <li className={liAdminStyle}>민원 관리</li>
     </ul>

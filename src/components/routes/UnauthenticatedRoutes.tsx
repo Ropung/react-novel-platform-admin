@@ -1,11 +1,12 @@
 import HomePage from "@/pages/home/HomePage";
 import Path from "@/utils/path/routes";
 import { Route, Routes } from "react-router-dom";
-import UserGradeManagement from "../users/UserGradeManagement";
-import UserManagement from "../users/UserManagement";
-import UserAuthorWriterManagement from "../users/UserAuthorWriterManagement";
-import UserAuthorWriterRequest from "../users/UserAuthorWriterRequest";
-import NobelManagement from "../novel/NobelManagement";
+import Grade from "@components/manage/users/Grade";
+import Manage from "@components/manage/users/Manage";
+import WriterApply from "@components/manage/users/WriterApply";
+import WriterManage from "@components/manage/users/WriterManage";
+import NobelManagement from "@components/manage/novel/NobelManagement";
+import Announce from "@components/manage/announce/Announce";
 
 const UnauthenticatedRoutes = () => {
   const {
@@ -15,21 +16,20 @@ const UnauthenticatedRoutes = () => {
     AUTH_WRITER_REQ,
     AUTH_WRITER_MANAGEMENT,
     AUTH_NOVEL_MANAGEMENT,
+    ANNOUNCE,
   } = Path;
 
   return (
     <Routes>
       <Route path={HOME} element={<HomePage />} />
-      <Route path={USERS} element={<UserManagement />} />
-      <Route path={GRADE} element={<UserGradeManagement />} />
+      <Route path={USERS} element={<Manage />} />
+      <Route path={GRADE} element={<Grade />} />
       {/* 작가 신청,관리 */}
-      <Route path={AUTH_WRITER_REQ} element={<UserAuthorWriterRequest />} />
+      <Route path={AUTH_WRITER_REQ} element={<WriterApply />} />
 
-      <Route
-        path={AUTH_WRITER_MANAGEMENT}
-        element={<UserAuthorWriterManagement />}
-      />
+      <Route path={AUTH_WRITER_MANAGEMENT} element={<WriterManage />} />
       <Route path={AUTH_NOVEL_MANAGEMENT} element={<NobelManagement />} />
+      <Route path={ANNOUNCE} element={<Announce />} />
     </Routes>
   );
 };

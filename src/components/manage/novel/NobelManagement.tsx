@@ -2,11 +2,10 @@ import MainButton, {
   DeleteButton,
   ModifyButton,
 } from "@/styles/ui-components/styled-button";
-import React from "react";
 import { FaAngleDown } from "react-icons/fa";
-import UserInfo from "../data/user";
+import UserInfo from "@/data/user";
 
-const Announcement = () => {
+const NobelManagement = () => {
   const theadStyle = "px-6 py-4  whitespace-nowrap font-medium text-gray-900";
   const spanStyle =
     "inline-flex items-center gap-1 rounded-full bg-gray-50 px-2 py-1 text-xs font-semibold";
@@ -36,19 +35,16 @@ const Announcement = () => {
           <thead className="w-full bg-gray-50">
             <tr>
               <th scope="col" className={theadStyle}>
-                번호
+                글번호
               </th>
               <th scope="col" className={theadStyle}>
-                회원목록
+                글제목
               </th>
               <th scope="col" className={theadStyle}>
-                레벨
+                작가
               </th>
               <th scope="col" className={theadStyle}>
-                등급
-              </th>
-              <th scope="col" className={theadStyle}>
-                할인률
+                장르
               </th>
               <th scope="col" className="px-6 py-4 font-medium text-right">
                 <div className="flex flex-row gap-1 items-center justify-end">
@@ -59,72 +55,61 @@ const Announcement = () => {
             </tr>
           </thead>
           {/* 데이터 들어갈곳 */}
-          <tbody className="w-full divide-y divide-gray-100 border-t border-gray-100">
-            {UserInfo.map((user) => {
-              return (
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-4" key={user.id}>
-                    {user.id}
-                  </td>
-                  <th className="flex gap-3 px-6 py-4 font-normal">
-                    <div className="relative h-10 w-10">
-                      <img
-                        className="h-full w-full rounded-full object-cover object-center"
-                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                      <span
-                        className={`absolute right-0 bottom-0 h-2 w-2 rounded-full ring ring-white ${
-                          user.states == "Approved" ? "bg-success" : "bg-danger"
-                        }`}
-                      ></span>
-                    </div>
-                    <div className="text-sm">
-                      {/* 회원아이디 */}
-                      <div className="font-medium text-gray-700">
-                        {user.userName}
-                      </div>
-                      {/* 이메일 */}
-                      <div className="text-gray-400">{user.email}</div>
-                    </div>
-                  </th>
-                  {/* 등급 레벨 */}
-                  <td className="px-6 py-4 text-gray-600">
-                    <span className={`${spanStyle}`}>
-                      LV.{user.grade.gradeLevel}
-                    </span>
-                  </td>
 
-                  <td className="px-6 py-4 text-gray-600">
-                    <div className="flex gap-2">
-                      <span className={`${spanStyle}`}>
-                        {user.grade.gradeName}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 text-gray-600">
-                    <div className="flex gap-2">
-                      <span className={`${spanStyle}`}>
-                        {user.grade.discountRate}%
-                      </span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex justify-end gap-4">
-                      <div className="flex flex-row gap-1 whitespace-nowrap">
-                        <ModifyButton className="px-2 py-1 text-xs">
-                          수정
-                        </ModifyButton>
-                        <DeleteButton className="px-2 py-1 text-xs">
-                          삭제
-                        </DeleteButton>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
+          {/* 번호,제목,작가,장르,할인률 */}
+          {UserInfo.map((user) => {
+            return (
+              <tbody className="w-full divide-y divide-gray-100 border-t border-gray-100">
+                {user.job == "MAKER" &&
+                  user.novel.map((novel) => {
+                    return (
+                      <tr className="hover:bg-gray-50">
+                        <td className="px-6 py-4" key={novel.novelId}>
+                          {novel.novelId}
+                        </td>
+                        <th className="flex gap-3 px-6 py-4 font-normal">
+                          <div className="text-sm">
+                            {/* 글제목 */}
+                            <div className="font-medium text-gray-700">
+                              {novel.novelTitle}
+                            </div>
+                          </div>
+                        </th>
+                        {/* 등급 레벨 */}
+                        <td className="px-6 py-4 text-gray-600">
+                          <span className={`${spanStyle}`}>
+                            {novel.userName}
+                          </span>
+                        </td>
+
+                        <td className="px-6 py-4 text-gray-600">
+                          <div className="flex gap-2">
+                            {novel.category.map((cate) => {
+                              return (
+                                <span className={`${spanStyle}`}>{cate}</span>
+                              );
+                            })}
+                          </div>
+                        </td>
+
+                        <td className="px-6 py-4">
+                          <div className="flex justify-end gap-4">
+                            <div className="flex flex-row gap-1 whitespace-nowrap">
+                              <ModifyButton className="px-2 py-1 text-xs">
+                                수정
+                              </ModifyButton>
+                              <DeleteButton className="px-2 py-1 text-xs">
+                                삭제
+                              </DeleteButton>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            );
+          })}
         </table>
       </div>
       {/* Pagination */}
@@ -210,4 +195,4 @@ const Announcement = () => {
   );
 };
 
-export default Announcement;
+export default NobelManagement;
