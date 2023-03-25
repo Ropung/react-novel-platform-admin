@@ -6,6 +6,7 @@ import UserManagement from "../users/UserManagement";
 import UserAuthorWriterManagement from "../users/UserAuthorWriterManagement";
 import UserAuthorWriterRequest from "../users/UserAuthorWriterRequest";
 import NobelManagement from "../novel/NobelManagement";
+import Announcement from "../announcement/Announcement";
 
 const ProtectedRoutes = () => {
   const {
@@ -15,6 +16,7 @@ const ProtectedRoutes = () => {
     AUTH_WRITER_REQ,
     AUTH_WRITER_MANAGEMENT,
     AUTH_NOVEL_MANAGEMENT,
+    ANNOUNCE,
   } = Path;
 
   return (
@@ -29,6 +31,7 @@ const ProtectedRoutes = () => {
         element={<UserAuthorWriterManagement />}
       />
       <Route path={AUTH_NOVEL_MANAGEMENT} element={<NobelManagement />} />
+      <Route path={ANNOUNCE} element={<Announcement />} />
     </Routes>
   );
 };
