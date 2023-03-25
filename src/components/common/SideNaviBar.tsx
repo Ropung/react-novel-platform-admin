@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
 import { GiVibratingBall } from "react-icons/gi";
 import { TfiWrite } from "react-icons/tfi";
+import { AiTwotoneNotification } from "react-icons/ai";
 import { MdManageAccounts, MdOutlineManageAccounts } from "react-icons/md";
 
 const SideNaviBar = () => {
@@ -14,6 +15,7 @@ const SideNaviBar = () => {
     AUTH_WRITER_REQ,
     AUTH_WRITER_MANAGEMENT,
     AUTH_NOVEL_MANAGEMENT,
+    ANNOUNCE,
   } = Path;
 
   const liAdminStyle = "cursor-pointer hover:bg-primary-active px-6 py-4";
@@ -72,6 +74,15 @@ const SideNaviBar = () => {
         >
           <TfiWrite className="text-xl" />
           <p>웹소설 관리</p>
+        </Link>
+      </li>
+      <li className={liAdminStyle}>
+        <Link
+          to={ANNOUNCE}
+          className="w-full h-fit flex flex-row gap-2 items-center"
+        >
+          <AiTwotoneNotification className="text-xl" />
+          <p>공지사항 관리</p>
         </Link>
       </li>
       <li className={liAdminStyle}>댓글관리</li>
