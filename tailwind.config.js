@@ -19,8 +19,8 @@ module.exports = {
         "basic-active": "#F0F0F0",
         "basic-contra": "#000000",
         // DEFAULT
-        default: "#d4d4d4",
-        "default-active": "#e6e6e6",
+        default: "#bdbebd",
+        "default-active": "#a9a9a9",
         "default-contra": "#131313",
         // PRIMARY
         primary: "#1266F1",
