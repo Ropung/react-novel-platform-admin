@@ -4,18 +4,27 @@ import { Link } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
 import { GiVibratingBall } from "react-icons/gi";
 import { TfiWrite } from "react-icons/tfi";
-import { AiTwotoneNotification } from "react-icons/ai";
+import {
+  AiFillPicture,
+  AiOutlineComment,
+  AiTwotoneNotification,
+} from "react-icons/ai";
 import { MdManageAccounts, MdOutlineManageAccounts } from "react-icons/md";
+import { HiUserGroup } from "react-icons/hi";
 
 const SideNaviBar = () => {
   const {
+    LOGIN,
     HOME,
     USERS,
     GRADE,
-    AUTH_WRITER_REQ,
-    AUTH_WRITER_MANAGEMENT,
-    AUTH_NOVEL_MANAGEMENT,
-    ANNOUNCE,
+    WRITER_APPROVE,
+    WRITER_MANAGE,
+    NOVEL_MANAGE,
+    ANNOUNCE_MANAGE,
+    BANNER_MANAGE,
+    COMMENT_MANAGE,
+    COMPLAIN_MANAGE,
   } = Path;
 
   const liAdminStyle = "cursor-pointer hover:bg-primary-active px-6 py-4";
@@ -51,7 +60,7 @@ const SideNaviBar = () => {
       </li>
       <li className={liAdminStyle}>
         <Link
-          to={AUTH_WRITER_REQ}
+          to={WRITER_APPROVE}
           className="w-full h-fit flex flex-row gap-2 items-center"
         >
           <MdOutlineManageAccounts className="text-xl" />
@@ -60,7 +69,7 @@ const SideNaviBar = () => {
       </li>
       <li className={liAdminStyle}>
         <Link
-          to={AUTH_WRITER_MANAGEMENT}
+          to={WRITER_MANAGE}
           className="w-full h-fit flex flex-row gap-2 items-center"
         >
           <MdManageAccounts className="text-xl" />
@@ -69,7 +78,7 @@ const SideNaviBar = () => {
       </li>
       <li className={liAdminStyle}>
         <Link
-          to={AUTH_NOVEL_MANAGEMENT}
+          to={NOVEL_MANAGE}
           className="w-full h-fit flex flex-row gap-2 items-center"
         >
           <TfiWrite className="text-xl" />
@@ -78,16 +87,40 @@ const SideNaviBar = () => {
       </li>
       <li className={liAdminStyle}>
         <Link
-          to={ANNOUNCE}
+          to={ANNOUNCE_MANAGE}
           className="w-full h-fit flex flex-row gap-2 items-center"
         >
           <AiTwotoneNotification className="text-xl" />
           <p>공지사항 관리</p>
         </Link>
       </li>
-      <li className={liAdminStyle}>댓글관리</li>
-      <li className={liAdminStyle}>배너 관리</li>
-      <li className={liAdminStyle}>민원 관리</li>
+      <li className={liAdminStyle}>
+        <Link
+          to={COMMENT_MANAGE}
+          className="w-full h-fit flex flex-row gap-2 items-center"
+        >
+          <AiOutlineComment className="text-xl" />
+          <p>댓글관리</p>
+        </Link>
+      </li>
+      <li className={liAdminStyle}>
+        <Link
+          to={BANNER_MANAGE}
+          className="w-full h-fit flex flex-row gap-2 items-center"
+        >
+          <AiFillPicture className="text-xl" />
+          <p>배너관리</p>
+        </Link>
+      </li>
+      <li className={liAdminStyle}>
+        <Link
+          to={COMPLAIN_MANAGE}
+          className="w-full h-fit flex flex-row gap-2 items-center"
+        >
+          <HiUserGroup className="text-xl" />
+          <p>민원관리</p>
+        </Link>
+      </li>
     </ul>
   );
 };

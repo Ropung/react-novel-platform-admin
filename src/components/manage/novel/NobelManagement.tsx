@@ -7,9 +7,6 @@ import UserInfo from "@/data/user";
 
 const NobelManagement = () => {
   const theadStyle = "px-6 py-4  whitespace-nowrap font-medium text-gray-900";
-  const spanStyle =
-    "inline-flex items-center gap-1 rounded-full bg-gray-50 px-2 py-1 text-xs font-semibold";
-
   return (
     <div className="w-full flex flex-col gap-2">
       {/* 검색창 */}
@@ -32,7 +29,7 @@ const NobelManagement = () => {
       </div>
       <div className="w-full overflow-hidden rounded-lg border border-gray-200 shadow-md">
         <table className="w-full border-collapse bg-white text-left text-sm overflow-x-auto">
-          <thead className="w-full bg-gray-50">
+          <thead className="w-full bg-gray-50 text-center">
             <tr>
               <th scope="col" className={theadStyle}>
                 글번호
@@ -59,49 +56,38 @@ const NobelManagement = () => {
           {/* 번호,제목,작가,장르,할인률 */}
           {UserInfo.map((user) => {
             return (
-              <tbody className="w-full divide-y divide-gray-100 border-t border-gray-100">
+              <tbody className="w-full divide-y divide-gray-100 border-t border-gray-100 text-center">
                 {user.job == "MAKER" &&
                   user.novel.map((novel) => {
                     return (
-                      <tr className="hover:bg-gray-50">
+                      <tr className="hover:bg-gray-50 cursor-pointer">
                         <td className="px-6 py-4" key={novel.novelId}>
                           {novel.novelId}
                         </td>
-                        <th className="flex gap-3 px-6 py-4 font-normal">
-                          <div className="text-sm">
-                            {/* 글제목 */}
-                            <div className="font-medium text-gray-700">
-                              {novel.novelTitle}
-                            </div>
-                          </div>
+                        <th className="px-6 py-4 font-normal whitespace-nowrap">
+                          {/* 글제목 */}
+                          {novel.novelTitle}
                         </th>
                         {/* 등급 레벨 */}
-                        <td className="px-6 py-4 text-gray-600">
-                          <span className={`${spanStyle}`}>
-                            {novel.userName}
-                          </span>
+                        <td className="px-6 py-4 text-gray-600 whitespace-nowrap">
+                          {novel.userName}
                         </td>
-
                         <td className="px-6 py-4 text-gray-600">
-                          <div className="flex gap-2">
+                          <div className="flex items-center gap-1">
                             {novel.category.map((cate) => {
                               return (
-                                <span className={`${spanStyle}`}>{cate}</span>
+                                <span
+                                  className={`border border-gray-200 rounded-md p-2 bg-gray-50`}
+                                >
+                                  {cate}
+                                </span>
                               );
                             })}
                           </div>
                         </td>
-
                         <td className="px-6 py-4">
-                          <div className="flex justify-end gap-4">
-                            <div className="flex flex-row gap-1 whitespace-nowrap">
-                              <ModifyButton className="px-2 py-1 text-xs">
-                                수정
-                              </ModifyButton>
-                              <DeleteButton className="px-2 py-1 text-xs">
-                                삭제
-                              </DeleteButton>
-                            </div>
+                          <div className="flex justify-center gap-4">
+                            <DeleteButton className="px-4">삭제</DeleteButton>
                           </div>
                         </td>
                       </tr>
