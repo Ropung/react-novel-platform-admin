@@ -31,5 +31,4 @@ export type GradeNameProps =
   | "DIAMOND";
 export type StatePops = "Approved" | "Declined";
 export type JobProps = "USER" | "MAKER";
-
-export type categoryProps = "Action" | "Romance" | "Thriller";
+export type categoryProps = "ACTION" | "ROMANCE" | "THRILLER";
