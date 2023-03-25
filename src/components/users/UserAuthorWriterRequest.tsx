@@ -1,72 +1,32 @@
-import UserInfoProps from "@/models/user";
-import {
-  DeleteButton,
-  ModifyButton,
-} from "@/styles/ui-components/styled-button";
+import MainButton, { ModifyButton } from "@/styles/ui-components/styled-button";
 import { FaAngleDown } from "react-icons/fa";
+import UserInfo from "../data/user";
 
 const UserAuthorWriterRequest = () => {
-  const UserInfo: UserInfoProps[] = [
-    {
-      id: 1,
-      userName: "노기훈",
-      email: "563710@naver.com",
-      states: "Approved",
-      job: "MAKER",
-      grade: {
-        gradeName: "GOLD",
-        gradeLevel: 22,
-        discountRate: 5,
-      },
-      signIn: "2020.02.09",
-      lastIn: "2021.02.09",
-      novel: [
-        {
-          userName: "노기훈",
-          category: ["Action", "Romance", "Thriller"],
-          novelTitle: "",
-          novelId: 1,
-        },
-      ],
-    },
-    {
-      id: 2,
-      userName: "노기훈",
-      email: "563712@naver.com",
-      states: "Declined",
-      job: "MAKER",
-      grade: {
-        gradeName: "GOLD",
-        gradeLevel: 22,
-        discountRate: 5,
-      },
-      signIn: "2020.02.09",
-      lastIn: "2021.02.09",
-      novel: [],
-    },
-    {
-      id: 3,
-      userName: "노기훈",
-      email: "563710@naver.com",
-      states: "Approved",
-      job: "USER",
-      grade: {
-        gradeName: "GOLD",
-        gradeLevel: 22,
-        discountRate: 5,
-      },
-      signIn: "2020.02.09",
-      lastIn: "2021.02.09",
-      novel: [],
-    },
-  ];
-
   const theadStyle = "px-6 py-4  whitespace-nowrap font-medium text-gray-900";
   const spanStyle =
     "inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-semibold";
 
   return (
     <div className="w-full flex flex-col gap-2">
+      {/* 검색창 */}
+      <div className="w-full flex flex-row gap-4 py-4">
+        <select
+          name="search_choice"
+          id="select"
+          className="w-[15%] border boder-gray-200 rounded-md p-2"
+        >
+          <option value="title">제목</option>
+          <option value="write">작가</option>
+          <option value="category">장르</option>
+        </select>
+        <input
+          className="flex flex-1 border boder-gray-200 rounded-md p-2"
+          type="text"
+          placeholder="검색어를 입력하세요."
+        />
+        <MainButton className="w-[20%] py-2 font-bold">검색하기</MainButton>
+      </div>
       <div className="w-full overflow-hidden rounded-lg border border-gray-200 shadow-md">
         <table className="w-full border-collapse bg-white text-left text-sm overflow-x-auto">
           <thead className="w-full bg-gray-50">
