@@ -1,5 +1,4 @@
 import { useLocation } from "react-router-dom";
-import Path from "@/utils/path/routes";
 import { useLayoutEffect, useState } from "react";
 import SideNaviBar from "@/components/common/SideNaviBar";
 import ProtectedRoutes from "@components/routes/ProtectedRoutes";

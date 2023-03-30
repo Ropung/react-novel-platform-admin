@@ -10,9 +10,6 @@ const Complain = () => {
 
   return (
     <div className="w-full flex flex-col gap-2">
-      <div className="flex items-center justify-end py-4  ">
-        <MainButton className="px-4">배너등록</MainButton>
-      </div>
       {/* 댓글 테이블 */}
       <section className="w-full overflow-hidden rounded-lg border border-gray-200 shadow-md">
         <table className="w-full border-collapse bg-white text-left text-sm overflow-x-auto">
