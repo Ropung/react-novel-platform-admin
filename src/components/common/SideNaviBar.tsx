@@ -30,7 +30,7 @@ const SideNaviBar = () => {
   const liAdminStyle = "cursor-pointer hover:bg-primary-active px-6 py-4";
 
   return (
-    <ul className="w-72 h-full flex flex-col text-main-contra font-bold text-sm">
+    <ul className="w-full h-full flex flex-col text-main-contra font-bold text-sm">
       <li className="bg-primary-active px-6 py-4">
         <Link
           to={HOME}

@@ -21,15 +21,15 @@ function App() {
     // console.log(authToken);
     isLogin && setRoutesComponent(<ProtectedRoutes />);
     !isLogin && setRoutesComponent(<UnauthenticatedRoutes />);
-  }, [isLogin]);
+  }, [isLogin, hasSideNav]);
 
   return (
     <main className="w-full h-full min-h-screen">
       <div className="w-full min-w-full h-full flex flex-row">
         {/* 사이드 */}
         <aside
-          className={`w-72 min-h-screen bg-primary duration-300 whitespace-nowrap ${
-            hasSideNav ? "!w-72" : "!w-0"
+          className={`w-64 min-h-screen bg-primary duration-300 whitespace-nowrap ${
+            hasSideNav ? "!w-64" : "!w-0"
           }`}
         >
           <SideNaviBar />
