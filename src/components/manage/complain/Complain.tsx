@@ -1,6 +1,8 @@
 import BannerInfo from "@/data/banner";
 import ComplainInfo from "@/data/complain";
 import MainButton, { DeleteButton } from "@/styles/ui-components/styled-button";
+import { PrimaryButton } from "@/styles/ui-components/styled-button";
+import { SubButton } from "@/styles/ui-components/styled-button";
 import { FiChevronLeft } from "react-icons/fi";
 
 const Complain = () => {
