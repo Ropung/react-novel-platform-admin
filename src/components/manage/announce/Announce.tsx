@@ -1,5 +1,5 @@
-import MainButton from "@/styles/ui-components/styled-button";
 import AnnounceInfo from "@/data/announce";
+import MainButton from "@/styles/ui-components/styled-button";
 import { FiChevronLeft } from "react-icons/fi";
 
 const Announce = () => {
@@ -53,9 +53,10 @@ const Announce = () => {
               return (
                 <tr className="hover:bg-gray-200 cursor-pointer">
                   {/* 글번호 */}
-                  <td className="px-6 py-4" key={item.id}>
+                  <td className="px-6 py-4" key={item.id ?? 1}>
                     {item.id}
                   </td>
+
                   {/* 카테고리 */}
                   <th className="flex gap-3 px-6 py-4 font-normal">
                     {item.category}
